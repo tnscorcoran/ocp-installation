@@ -1,0 +1,60 @@
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+etcd
+nfs
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+# SSH user, this user should allow ssh based auth without requiring a password
+ansible_ssh_user=root
+
+# If ansible_ssh_user is not root, ansible_sudo must be set to true
+debug_level=2
+# To deploy origin, change deployment_type to origin
+deployment_type=openshift-enterprise
+openshift_clock_enabled=true
+openshift_template_service_broker_namespaces=['openshift','myproject']
+#Enable service catalog
+openshift_enable_service_catalog=true
+# Enable template service broker (requires service catalog to be enabled, above)
+template_service_broker_install=true
+# Disabling for smaller instances used for Demo purposes. Use instances with minimum disk and memory sizes required by OpenShift
+openshift_disable_check=disk_availability,memory_availability,docker_image_availability,docker_storage
+
+openshift_master_default_subdomain=apps.vbhalera.osecloud.com
+#osm_default_node_selector='region=primary'
+openshift_hosted_router_selector='region=infra'
+openshift_registry_selector='region=infra'
+
+# Registry
+openshift_hosted_registry_storage_kind=nfs
+openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+openshift_hosted_registry_storage_nfs_directory=/exports
+openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=10Gi
+
+# enable htpasswd authentication
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/openshift/openshift-passwd'}]
+
+openshift_release=v3.7.23
+openshift_image_tag=v3.7.23
+openshift_pkg_version=-3.7.23
+
+# host group for masters
+[masters]
+ip-172-31-180-33.ec2.internal
+
+[etcd]
+ip-172-31-180-33.ec2.internal
+
+# host group for nodes, includes region info
+[nodes]
+ip-172-31-180-33.ec2.internal openshift_ip=172.31.180.33 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_public_hostname=ocpmaster.summit.vbhalera.osecloud.com openshift_scheduleable=true
+ip-172-31-129-197.ec2.internal openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+
+
+[nfs]
+ip-172-31-180-33.ec2.internal
