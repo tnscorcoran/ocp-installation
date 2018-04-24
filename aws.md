@@ -18,3 +18,12 @@ Node
 /dev/sdb  50GB
 ```
 
+#Public IP and Route 53 settings
+
+```
+1) Assign Public IP to master ec2 instance
+
+2) Crete Record set in Route 54
+*.apps.summit
+ocpmaster.summit
+```
