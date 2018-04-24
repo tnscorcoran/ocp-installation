@@ -56,7 +56,7 @@
   - yum: name=sos state=latest
   - yum: name=psacct state=latest
   - yum: name=atomic-openshift-utils state=latest
-  - yum: name=atomic-openshift-clients=latest
+  - yum: name=atomic-openshift-clients state=latest
   - yum: name=atomic-openshift-excluder
   - yum: name=atomic-openshift-docker-excluder
 
