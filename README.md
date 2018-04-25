@@ -12,3 +12,9 @@ ansible-playbook -i host.prep host-prep.yml
 ```
 ansible-playbook -e openshift_disable_check=package_version,memory_availability,docker_storage /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 ```
+
+# Add user
+
+```
+htpasswd /etc/openshift/openshift-passwd user1
+```
