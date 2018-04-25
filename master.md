@@ -1,8 +1,7 @@
 # copy keys from bastion to master
 
 ```
-cd .ssh/
-vi authorized_keys
+vi .ssh/authorized_keys
 ```
 
 # disk partition
