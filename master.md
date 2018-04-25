@@ -1,10 +1,10 @@
-# copy keys from bastion to master
+### copy keys from bastion to master
 
 ```
 vi .ssh/authorized_keys
 ```
 
-# disk partition
+### disk partition
 
 ```
 lsblk

@@ -1,11 +1,11 @@
-#Instance size
+### Instance size
 ```
 t2.small for bastion
 t2.large instance for master 
 t2.large instance for node
 ```
 
-#Storage
+### Storage
 
 ```
 Master
@@ -18,7 +18,7 @@ Node
 /dev/sdb  50GB
 ```
 
-#Public IP and Route 53 settings
+### Public IP and Route 53 settings
 
 ```
 1) Assign Public IP to master ec2 instance

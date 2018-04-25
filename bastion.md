@@ -1,4 +1,4 @@
-# Setting up Bastion host
+### Setting up Bastion host
 
 ```
 subscription-manager register
@@ -9,7 +9,7 @@ subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server
 yum install atomic-openshift-utils -y
 ```
 
-# Generating Keys
+### Generating Keys
 
 ```
 ssh-keygen -t rsa
