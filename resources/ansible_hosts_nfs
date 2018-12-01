@@ -23,7 +23,7 @@ template_service_broker_install=true
 # Disabling for smaller instances used for Demo purposes. Use instances with minimum disk and memory sizes required by OpenShift
 openshift_disable_check=disk_availability,memory_availability,docker_image_availability,docker_storage
 
-openshift_master_default_subdomain=apps.vbhalera.osecloud.com
+openshift_master_default_subdomain=apps.tnscorcoran.com
 #osm_default_node_selector='region=primary'
 openshift_hosted_router_selector='region=infra'
 openshift_registry_selector='region=infra'
@@ -39,22 +39,22 @@ openshift_hosted_registry_storage_volume_size=10Gi
 # enable htpasswd authentication
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/openshift/openshift-passwd'}]
 
-openshift_release=v3.7.23
-openshift_image_tag=v3.7.23
-openshift_pkg_version=-3.7.23
+openshift_release=v3.11.16
+openshift_image_tag=v3.11.16
+openshift_pkg_version=-3.11.16
 
 # host group for masters
 [masters]
-ip-172-31-180-33.ec2.internal
+ip-172-31-23-5.ap-southeast-2.compute.internal
 
 [etcd]
-ip-172-31-180-33.ec2.internal
+ip-172-31-23-5.ap-southeast-2.compute.internal
 
 # host group for nodes, includes region info
 [nodes]
-ip-172-31-180-33.ec2.internal openshift_ip=172.31.180.33 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_public_hostname=ocpmaster.summit.vbhalera.osecloud.com openshift_scheduleable=true
-ip-172-31-129-197.ec2.internal openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ip-172-31-23-5.ap-southeast-2.compute.internal openshift_ip=172.31.23.5 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_public_hostname=ocpmaster.tnscorcoran.com openshift_scheduleable=true
+ip-172-31-25-228.ap-southeast-2.compute.internal openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 
 [nfs]
-ip-172-31-180-33.ec2.internal
+ip-172-31-23-5.ap-southeast-2.compute.internal
