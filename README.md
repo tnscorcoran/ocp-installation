@@ -7,6 +7,9 @@
 ansible-playbook -i host.prep host-prep.yml
 ```
 
+### Replace with ansible hosts
+Remember to add the new host file at location `/etc/ansible/hosts`
+
 ### Deploy cluster using ansible playbook
 
 ```
